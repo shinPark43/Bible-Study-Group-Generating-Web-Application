@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Group Results</h1>
+        <div id="groupResultsOutput" class="group-container"></div>
+        <button id="backButton" onclick="window.location.href='QT-team maker.html'">Back to Main Page</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const outputDiv = document.getElementById("groupResultsOutput");
+            const groups = JSON.parse(localStorage.getItem("groups")) || [];
+
+            if (groups.length === 0) {
+                outputDiv.innerHTML = "<p>No groups found. Please try again.</p>";
+                return;
+            }
+
+            groups.forEach((group, index) => {
+                const groupDiv = document.createElement("div");
+                groupDiv.className = "group";
+
+                const leaderTitle = document.createElement("h2");
+                leaderTitle.textContent = `Group ${index + 1}: ${group.name}`;
+                leaderTitle.style.color = "blue"; // Leader's name in purple
+
+                const membersList = document.createElement("p");
+                membersList.textContent = `${group.members.join(", ")}`;
+                membersList.style.color = "black"; // Members' names in black
+
+                groupDiv.appendChild(leaderTitle);
+                groupDiv.appendChild(membersList);
+                outputDiv.appendChild(groupDiv);
+            });
+        });
+    </script>
+</body>
+</html>

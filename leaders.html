@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Leaders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1 id="group-leaders">QT 그룹 리더</h1>
+            <textarea id="leadersInput" placeholder="Enter leader names, separated by commas"></textarea>
+            <h1 id="group-members">QT 그룹 멤버</h1>
+            <textarea id="membersInput" placeholder="Enter member names, separated by commas"></textarea>
+            <button id="createGroupsButton">Create Groups</button>
+        </div>
+</div>
+    <script>
+        document.getElementById("createGroupsButton").addEventListener("click", function () {
+            const leadersInput = document.getElementById("leadersInput").value.trim();
+            const membersInput = document.getElementById("membersInput").value.trim();
+
+            const leaders = leadersInput.split(",").map(name => name.trim()).filter(name => name);
+            const members = membersInput.split(",").map(name => name.trim()).filter(name => name);
+
+            if (leaders.length === 0 || members.length === 0) {
+                alert("Please enter at least one leader and one member.");
+                return;
+            }
+
+            const groups = assignMembersToLeaders(leaders, members);
+            localStorage.setItem("groups", JSON.stringify(groups));
+            window.location.href = "groups_results.html";
+        });
+
+        function assignMembersToLeaders(leaders, members) {
+            const groups = leaders.map(leader => ({ leader, members: [] }));
+            
+            // Shuffle members
+            const shuffledMembers = members.sort(() => Math.random() - 0.5);
+
+            // Distribute members evenly
+            shuffledMembers.forEach((member, index) => {
+                groups[index % groups.length].members.push(member);
+            });
+
+            return groups.map(group => ({
+                name: group.leader,
+                members: group.members
+            }));
+        }
+    </script>
+</body>
+</html>

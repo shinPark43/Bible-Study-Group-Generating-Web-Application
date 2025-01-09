@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소망침례교회 청년부 QT 그룹</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="images/logo.gif" alt="Hope Korean Baptist Church Logo" class="logo">
+            <h1>소망침례교회 청년부 QT 그룹</h1>
+        </div>
+        <div class="content">
+            <textarea id="namesInput" placeholder="Enter names, separated by commas"></textarea>
+            <button id="divideButton">Create Groups</button>
+            <button id="leadersPageButton" onclick="window.location.href='leaders.html'">Assign Leaders</button>
+
+        </div>
+    </div>
+    <script>
+        document.getElementById("divideButton").addEventListener("click", function () {
+            const input = document.getElementById("namesInput").value.trim();
+            const names = input.split(",").map(name => name.trim()).filter(name => name);
+
+            if (names.length < 3) {
+                alert("Please enter at least three names.");
+                return;
+            }
+
+            const groups = divideIntoGroups(names);
+            localStorage.setItem("groups", JSON.stringify(groups)); // Save groups to localStorage
+            window.location.href = "groups.html"; // Redirect to groups.html
+        });
+
+        function divideIntoGroups(names) {
+            // Shuffle the names array
+            const shuffled = names.sort(() => Math.random() - 0.5);
+
+            // Divide into groups of 3
+            const groups = [];
+            while (shuffled.length >= 3) {
+                groups.push(shuffled.splice(0, 3));
+            }
+
+            // Distribute remaining names
+            while (shuffled.length > 0) {
+                const groupIndex = Math.floor(Math.random() * groups.length);
+                groups[groupIndex].push(shuffled.pop());
+            }
+
+            return groups;
+        }
+    </script>
+</body>
+</html>
