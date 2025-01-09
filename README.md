@@ -1,54 +1,72 @@
-Bible Study Group Generator
-This web application helps the youth group of Hope Korean Baptist Church easily create and manage Bible study groups. It provides the ability to generate groups either with a designated leader or without a leader, based on user input.
+# Group Divider Application
 
-Features
-Create Bible Study Groups with or without a Leader
-Users can choose to create groups with a designated leader or without one.
+## Overview
+This repository contains a **Group Divider Application** that helps users divide individuals into groups, either with designated leaders or without. The application is user-friendly and requires the input of names in simple text fields.
 
-Input Group Members
-Simply enter the names of individuals that need to be divided into groups in the text box, separated by commas.
+---
 
-Leader and Member Input
-If you choose to create a group with a leader, there will be two text boxes:
+## Features
 
-One for the names of the leaders.
-Another for the names of the group members.
-How to Use
-Choose Group Type
+1. **Group Creation with or without Leaders**:
+   - Users can choose whether to assign leaders to the groups or create groups randomly without leaders.
 
-Select whether you want to create a group with a leader or without a leader.
-Enter Group Information
+2. **Input Names**:
+   - **Members Only**: Enter the names of all individuals to be divided into groups, separated by commas.
+   - **Leaders and Members**: If you choose to create groups with leaders:
+     - A separate text box is available to input the names of leaders (comma-separated).
+     - Another text box is provided for entering the names of the remaining members.
 
-If creating groups without a leader:
-In the provided text box, enter the names of all individuals who need to be assigned to groups. Separate each name with a comma (e.g., John, Sarah, Michael).
-If creating groups with a leader:
-Enter the names of the leaders in the first text box, separated by commas (e.g., John, Sarah).
-Enter the names of the members in the second text box, separated by commas (e.g., Michael, Anna, David).
-Generate Groups
-After entering the names, press the button to generate your groups. The web application will automatically divide the members into groups based on the given input.
+---
 
-Installation
-Clone this repository:
+## How to Use
 
-bash
-Copy code
-git clone https://github.com/your-username/bible-study-group-generator.git
-Install dependencies:
+### **Option 1: Create Groups Without Leaders**
+1. Select the "No Leaders" option.
+2. In the provided text box, enter the names of all individuals to be divided, separated by commas.
+   - Example: `Alice, Bob, Charlie, Dave`
+3. Click the "Create Groups" button, and the system will divide the individuals into groups randomly.
 
-Navigate to the project directory:
-bash
-Copy code
-cd bible-study-group-generator
-Install the required packages (make sure you have Node.js and npm installed):
-bash
-Copy code
-npm install
-Run the application:
+### **Option 2: Create Groups With Leaders**
+1. Select the "With Leaders" option.
+2. Enter the names of leaders in the "Leaders" text box, separated by commas.
+   - Example: `Alice, Bob`
+3. Enter the names of the remaining members in the "Members" text box, separated by commas.
+   - Example: `Charlie, Dave, Eve, Frank`
+4. Click the "Create Groups" button. The system will assign leaders to each group and distribute members accordingly.
 
-bash
-Copy code
-npm start
-The app should now be running locally at http://localhost:3000.
+---
 
-Contributing
-If you'd like to contribute to this project, feel free to submit a pull request. Please ensure that your code follows the existing style and includes tests where applicable.
+## Example Scenarios
+
+### **Scenario 1: Groups Without Leaders**
+- Input: `Alice, Bob, Charlie, Dave, Eve`
+- Output: 
+  - Group 1: Alice, Bob
+  - Group 2: Charlie, Dave, Eve
+
+### **Scenario 2: Groups With Leaders**
+- Leaders Input: `Alice, Bob`
+- Members Input: `Charlie, Dave, Eve, Frank`
+- Output:
+  - Group 1 (Leader: Alice): Charlie, Eve
+  - Group 2 (Leader: Bob): Dave, Frank
+
+---
+
+## Requirements
+- A modern web browser to run the application.
+- A text editor for modifying inputs if needed.
+
+---
+
+## Contributions
+Feel free to contribute by opening an issue or submitting a pull request! For any questions, reach out via the repository's Issues section.
+
+---
+
+## License
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+### Enjoy Using the Group Divider Application!
