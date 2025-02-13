@@ -4,6 +4,8 @@
 This repository contains a **Group Divider Application** that helps users divide individuals into groups, either with designated leaders or without. The application is user-friendly and requires the input of names in simple text fields.
 
 ---
+## Link
+https://shinpark43.github.io/Bible-Study-Group-Generating-Web-Application/
 
 ## Features
 
